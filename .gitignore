@@ -1,3 +1,4 @@
+personal-notes.txt
 *.iml
 .gradle
 /local.properties
@@ -7,4 +8,3 @@
 /build
 /captures
 .externalNativeBuild
-personal-notes.txt

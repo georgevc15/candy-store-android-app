@@ -3,4 +3,3 @@ git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/georgevc15/candy-store-android-app.git
-git push -u origin master
