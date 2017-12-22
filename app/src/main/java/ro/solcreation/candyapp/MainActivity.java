@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView)this.findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.candy_coded_logo);
 
-        ArrayList<String> candy_list =  new ArrayList<String>();
+        final ArrayList<String> candy_list =  new ArrayList<String>();
 
         candy_list.add("Tropical Wave");
         candy_list.add("Berry Bouncer");
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 //toast.show();
                 Intent detailIntent = new Intent(MainActivity.this,
                                             DetailActivity.class);
+                detailIntent.putExtra("cand_name", candy_list.get(i));
                 startActivity(detailIntent);
             }
         });
