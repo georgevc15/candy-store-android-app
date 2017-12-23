@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.loopj.android.http.*;
 
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.text_view_candy,
                 candy_list);
 
-         ListView listView = (ListView)this.findViewById(R.id.list_view_candy);
-
+        ListView listView = (ListView)this.findViewById(R.id.list_view_candy);
         listView.setAdapter(adapter);
 
         Context context = this;
@@ -70,6 +73,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(detailIntent);
             }
         });
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("http://go.codeschool.com/CandyAPI",
+                new TextHttpResponseHandler() {
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        Log.d("AsyncHttpClient", "response =" + responseString);
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                        Log.d("AsyncHttpClient", "response =" + responseString);
+                    }
+                });
 
     }
 }
