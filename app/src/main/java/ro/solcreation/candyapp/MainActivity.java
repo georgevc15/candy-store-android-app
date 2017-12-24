@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.loopj.android.http.*;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
@@ -34,19 +37,8 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<String> candy_list =  new ArrayList<String>();
 
         candy_list.add("Tropical Wave");
-        candy_list.add("Berry Bouncer");
-        candy_list.add("Grape Gummer");
-        candy_list.add("Apple of My Eye");
-        candy_list.add("Roygbiv Spinner");
-        candy_list.add("Roygbiv Spinner2");
-        candy_list.add("Roygbiv Spinner3");
-        candy_list.add("Roygbiv Spinner4");
-        candy_list.add("Roygbiv Spinner5");
-        candy_list.add("Roygbiv Spinner6");
-        candy_list.add("Roygbiv Spinner7");
-        candy_list.add("Roygbiv Spinner8");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 R.layout.list_item_candy,
                 R.id.text_view_candy,
@@ -75,11 +67,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://go.codeschool.com/CandyAPI",
+        client.get("https://courseware.codeschool.com/super_sweet_android_time/API/TinyBytes.json",
                 new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                         Log.d("AsyncHttpClient", "response =" + responseString);
+                        Gson gson = new GsonBuilder().create();
+                        Candy[] candies = gson.fromJson(responseString, Candy[].class);
+                        adapter.clear();
+                        for(Candy candy : candies) {
+                            adapter.add(candy.name);
+                        }
                     }
 
                     @Override

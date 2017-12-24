@@ -5,5 +5,5 @@ git commit -m "first commit"
 git remote add origin https://github.com/georgevc15/candy-store-android-app.git
 
 
-https://github.com/codeschool/TryAndroid-SampleApp
+https://github.com/codeschool/SuperSweetAndroidTime-CandyCodedSampleApp
 https://github.com/codeschool/TryAndroid-CandyCodedSampleApp
