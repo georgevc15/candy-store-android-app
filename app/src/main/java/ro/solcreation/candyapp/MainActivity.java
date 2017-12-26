@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
+    private Candy[] candies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 //toast.show();
                 Intent detailIntent = new Intent(MainActivity.this,
                                             DetailActivity.class);
-                detailIntent.putExtra("cand_name", candy_list.get(i));
+                detailIntent.putExtra("cand_name", candies[i].name);
+                detailIntent.putExtra("candy_image",candies[i].imageURL);
+                detailIntent.putExtra("candy_price",candies[i].price);
+                detailIntent.putExtra("candy_description",candies[i].description);
                 startActivity(detailIntent);
             }
         });

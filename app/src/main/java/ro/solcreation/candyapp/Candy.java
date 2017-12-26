@@ -7,7 +7,7 @@ package ro.solcreation.candyapp;
 public class Candy {
     public int id;
     public String name;
-    public String image;
+    public String imageURL;
     public String price;
     public String description;
 }

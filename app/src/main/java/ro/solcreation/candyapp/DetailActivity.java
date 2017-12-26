@@ -3,6 +3,7 @@ package ro.solcreation.candyapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -21,6 +22,20 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView textView = (TextView)this.findViewById(R.id.text_view_name);
         textView.setText(candy_name);
+
+        String candyImage = "";
+        if(intent.hasExtra("candy_image"))
+        candyImage = intent.getStringExtra("candy_image");
+
+        String candyPrice = "";
+        if(intent.hasExtra("candy_price"))
+        candyPrice = intent.getStringExtra("candy_price");
+
+
+        String candyDesc = intent.getStringExtra("candy_desc");
+
+        Log.d("DetailActivity", "Intent data: " + candyImage + ", " + candyPrice
+        + ", " + candyDesc);
 
     }
 }
