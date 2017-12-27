@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 detailIntent.putExtra("cand_name", candies[i].name);
                 detailIntent.putExtra("candy_image",candies[i].imageURL);
                 detailIntent.putExtra("candy_price",candies[i].price);
-                detailIntent.putExtra("candy_description",candies[i].description);
+                detailIntent.putExtra("candy_desc",candies[i].description);
                 startActivity(detailIntent);
             }
         });

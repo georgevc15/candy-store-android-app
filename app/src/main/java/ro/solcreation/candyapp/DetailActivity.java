@@ -31,8 +31,16 @@ public class DetailActivity extends AppCompatActivity {
         if(intent.hasExtra("candy_price"))
         candyPrice = intent.getStringExtra("candy_price");
 
+        TextView textViewPrice = (TextView)this.findViewById(R.id.text_view_price);
+        textViewPrice.setText(candyPrice);
 
-        String candyDesc = intent.getStringExtra("candy_desc");
+
+        String candyDesc = "";
+        if(intent.hasExtra("candy_desc"))
+            candyDesc = intent.getStringExtra("candy_desc");
+
+        TextView textViewDesc = (TextView)this.findViewById(R.id.text_view_desc);
+        textViewDesc.setText(candyDesc);
 
         Log.d("DetailActivity", "Intent data: " + candyImage + ", " + candyPrice
         + ", " + candyDesc);
